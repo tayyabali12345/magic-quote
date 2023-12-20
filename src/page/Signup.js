@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { setCurrentUser,  addUser } from '../actions/userActions';
 import { useDispatch } from 'react-redux';
 import { useSelector } from "react-redux";
+import './css/Login.css'
 
 const Signup = () => {
   const [username, setUsername] = useState('');
@@ -43,10 +44,9 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <h2>Signup</h2>
+    <center>
       <form>
-        <div>
+        <div className='fieldss'>
           <label>Username:</label>
           <input
             type="text"
@@ -54,7 +54,7 @@ const Signup = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div>
+        <div className='fieldss'>
           <label>First Name:</label>
           <input
             type="text"
@@ -62,7 +62,7 @@ const Signup = () => {
             onChange={(e) => setFirstName(e.target.value)}
           />
         </div>
-        <div>
+        <div className='fieldss'>
           <label>Last Name:</label>
           <input
             type="text"
@@ -70,7 +70,7 @@ const Signup = () => {
             onChange={(e) => setLastName(e.target.value)}
           />
         </div>
-        <div>
+        <div className='fieldss'>
           <label>Password:</label>
           <input
             type="password"
@@ -78,7 +78,7 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <div>
+        <div className='fieldss'>
           <label>Confirm Password:</label>
           <input
             type="password"
@@ -86,7 +86,7 @@ const Signup = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
-        <div>
+        <div className='fieldss'>
           <label>Gender:</label>
           <select value={gender} onChange={(e) => setGender(e.target.value)}>
             <option value="">Select Gender</option>
@@ -95,7 +95,7 @@ const Signup = () => {
             <option value="other">Other</option>
           </select>
         </div>
-        <div>
+        <div className='fieldss'>
           <label>User Picture:</label>
           <input type="file" accept="image/*" onChange={handlePictureChange} />
         </div>
@@ -104,7 +104,7 @@ const Signup = () => {
         </button>
       </form>
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-    </div>
+    </center>
   );
 };
 

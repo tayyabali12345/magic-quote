@@ -28,9 +28,32 @@ const userSlice = createSlice({
       state.users = state.users.map(user =>
         user.id === updatedUser.id ? updatedUser : user
       );
-
-      console.log(state.users)
     },
+
+    clearUserData: (state, action) => {
+      state.currentUser = null;
+    },
+
+    followUser: (state, action) => {
+      const existingLikeIndex = state.users.findIndex(
+        (user) => user.id === action.payload[1]
+      );
+      
+      if (existingLikeIndex !== -1) {
+        state.users[existingLikeIndex] = {
+          ...state.users[existingLikeIndex],
+          following_ids: [
+            ...state.users[existingLikeIndex].following_ids,
+            action.payload[0]
+          ],
+        };
+      }
+
+      state.currentUser = state.users[existingLikeIndex];
+    },
+
+
+
   },
 });
 

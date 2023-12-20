@@ -25,14 +25,14 @@ export default function NewComment({ quoteId }) {
   };
 
   return (
-    <div>
+    <center>
       <label>Create Comment:</label>
       <input
         type="text"
         value={newComment}
         onChange={(e) => setNewComment(e.target.value)}
       />
-      <button onClick={handleAddComment}>Add Comment</button>
-    </div>
+      <button className='btn' onClick={handleAddComment}>Add Comment</button>
+    </center>
   );
 }

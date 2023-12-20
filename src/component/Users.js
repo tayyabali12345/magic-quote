@@ -1,13 +1,22 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { followUser } from '../actions/userActions';
 
 export default function Users() {
   const users = useSelector((state) => state.users.users);
+  const currentUser = useSelector((state) => state.users.currentUser);
+  const dispatch = useDispatch();
+  console.log('che3ck it');
+  console.log(currentUser);
+
+  const handleFollowRequest = (userId) => {
+    dispatch(followUser([ userId, currentUser.id ]));
+  }
 
   return (
     <div>
-      <h2>Tags List</h2>
+      <h2>Users List</h2>
       <table>
         <thead>
           <tr>
@@ -29,6 +38,8 @@ export default function Users() {
               <Link className="Link" to={`/user/${user.id}`}>
                 Show User
               </Link>
+
+              <button onClick={()=>{handleFollowRequest(user.id)}}>Follow</button>
             </td>
           </tr>
         ))}

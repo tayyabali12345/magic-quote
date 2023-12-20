@@ -22,8 +22,8 @@ export default function EditQuote() {
   };
 
   return (
-    <div>
-      <label>'Edit Quote'</label>
+    <center>
+      <label>'Edit Quote: '</label>
       <input
         type="text"
         value={quote}
@@ -32,6 +32,6 @@ export default function EditQuote() {
       <button onClick={handleQuoteAction}>
         Save Quote
       </button>
-    </div>
+    </center>
   );
 }

@@ -16,41 +16,42 @@ export default function AllTags() {
   };
 
   const handleDelete = (tagId) => {
-    // Dispatch the removeQuote action with the quoteId
     dispatch(deleteTag(tagId));
   };
 
   return (
-    <div>
-      <h2>Tags List</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Author</th>
-            <th>Description</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tags.map(tag => (
-            <tr key={tag.id}>
-              <td>{tag.name}</td>
-              <td>{tag.author}</td>
-              {currentUser.role !== "admin" ? (
-                <td>
-                  <button onClick={() => (tag.followed_user_ids.find(id => id === currentUser.id) ? unfollowTags(tag.id) : followTags(tag.id))}>
-                    {tag.followed_user_ids.find(id => id === currentUser.id) ? "UnFollow" : "Follow"}
-                  </button>
-                </td>
-              ):(
-              <td>
-                <button onClick={() => handleDelete(tag.id)}>Delete Tag</button>
-              </td>)
-              }
+    <center>
+      <div className='container'>
+        <h4>Tags List</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Author</th>
+              <th>Description</th>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {tags.map(tag => (
+              <tr key={tag.id}>
+                <td>{tag.name}</td>
+                <td>{tag.author}</td>
+                {currentUser.role !== "admin" ? (
+                  <td>
+                    <button onClick={() => (tag.followed_user_ids.find(id => id === currentUser.id) ? unfollowTags(tag.id) : followTags(tag.id))}>
+                      {tag.followed_user_ids.find(id => id === currentUser.id) ? "UnFollow" : "Follow"}
+                    </button>
+                  </td>
+                ):(
+                <td>
+                  <button className='btn deletebtn' onClick={() => handleDelete(tag.id)}>Delete Tag</button>
+                </td>)
+                }
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </center>
   );
 }

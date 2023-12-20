@@ -15,7 +15,6 @@ const ShowRandomQuote = () => {
   const dispatch = useDispatch();
   const [currentQuote, setCurrentQuote] = useState(null);
   const likes = useSelector((state) => state.likes.likes);
-  console.log(likes);
   const navigate = useNavigate();
   const dislikes = useSelector((state) => state.dislikes.dislikes);
   const nextLikesId = useSelector((state) => state.likes.nextLikeId);
@@ -85,41 +84,49 @@ const ShowRandomQuote = () => {
 
   return (
     <div>
-      <h2>Random Quote</h2>
-      <p>Author: {currentQuote.author}</p>
-      <p>Quote: {currentQuote.description}</p>
-      <p>Date: {new Date(currentQuote.date).toLocaleDateString()}</p>
-      <p>Time: {new Date(currentQuote.date).toLocaleTimeString()}</p>
-      <p>Tags: {getTagNames(currentQuote.tag_ids).join(', ')}</p>
+      <center>
+      <div className='showdowed'>
+        <h2>Random Quote</h2>
+        <p>Author: {currentQuote.author}</p>
+        <p>Quote: {currentQuote.description}</p>
+        <p>Date: {new Date(currentQuote.date).toLocaleDateString()}</p>
+        <p>Time: {new Date(currentQuote.date).toLocaleTimeString()}</p>
+        <p>Tags: {getTagNames(currentQuote.tag_ids).join(', ')}</p>
 
-      <p>{usersQuoteLike ? usersQuoteLike.user_ids.length : 'N/A'}</p>
-      <p>{usersQuoteDislike ? usersQuoteDislike.user_ids.length : 'N/A'}</p>
+        <p>Likes: {usersQuoteLike ? usersQuoteLike.user_ids.length : 0}</p>
+        <p>Dislikes: {usersQuoteDislike ? usersQuoteDislike.user_ids.length : 0}</p>
 
-      {currentQuote.user_id === currentUser.id ? (
-                    <>
-                      <button onClick={() => editQuote(currentQuote)}>Edit</button>
-                      <button onClick={() => deleteQuote(currentQuote.id)}>Delete</button>
-                    </>
-                  ) : (
-                    'N/A'
-      )}
+            {currentQuote.user_id === currentUser.id ? (
+                          <div className='flex'>
 
-      <button
-        onClick={() => addQuoteLike(currentQuote.id)}
-        disabled={usersQuoteLike ? usersQuoteLike.user_ids.includes(currentUser.id) : false}
-      >
-        Like
-      </button>
-      <button
-        onClick={() => quoteDisLike(currentQuote.id)}
-        disabled={usersQuoteDislike ? usersQuoteDislike.user_ids.includes(currentUser.id) : false}
-      >
-        Dislike
-      </button>
+                            <button className='btn' onClick={() => editQuote(currentQuote)}>Edit</button>
+                            <button className='btn deletebtn' onClick={() => deleteQuote(currentQuote.id)}>Delete</button>
+                          </div>
+                        ) : (
+                          ''
+            )}
 
-      <br/>
-      <Comments quoteId={currentQuote.id} />
-      <NewComment quoteId={currentQuote.id} ></NewComment>
+            <button className='btn'
+              onClick={() => addQuoteLike(currentQuote.id)}
+              disabled={usersQuoteLike ? usersQuoteLike.user_ids.includes(currentUser.id) : false}
+            >
+              Like
+            </button>
+            <button className = 'btn'
+              onClick={() => quoteDisLike(currentQuote.id)}
+              disabled={usersQuoteDislike ? usersQuoteDislike.user_ids.includes(currentUser.id) : false}
+            >
+              Dislike
+            </button>
+
+
+      </div>
+      </center>
+        <br/>
+        <div className='continer'>
+          <Comments quoteId={currentQuote.id} />
+          <NewComment quoteId={currentQuote.id} ></NewComment>
+        </div>
     </div>
   );
 };

@@ -30,7 +30,6 @@ export default function AllComments({ quoteId }) {
       quote_id: null,
     };
 
-
     dispatch(userCommentLikes([objLike, "comment"]));
 
     const usersCommentDislike = dislikes.find((dislike) => dislike.comment_id === id);
@@ -52,7 +51,6 @@ export default function AllComments({ quoteId }) {
 
     const usersCommentLike = likes.find((like) => like.comment_id === id);
     if (usersCommentLike) {
-
       dispatch(removeCommentedUser([id, currentUser.id, "comment"]));
     }
 
@@ -64,13 +62,13 @@ export default function AllComments({ quoteId }) {
 
   return (
     <div>
-      <h2>Comments</h2>
       <table>
         <thead>
           <tr>
             <th>User Name</th>
-            <th>Comment</th>
-            <th>Comment Likes</th>
+            <th>Description</th>
+            <th>Likes</th>
+            <th>Dislikes</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -85,19 +83,18 @@ export default function AllComments({ quoteId }) {
             return (
               <tr key={comment.id}>
                 <td>{userName}</td>
-                <td>{comment.id}</td>
                 <td>{comment.description}</td>
-                <td>{usersCommentLike ? usersCommentLike.user_ids.length : 'N/A'}</td>
-                <td>{usersCommentDislike ? usersCommentDislike.user_ids.length : 'N/A'}</td>
+                <td>{usersCommentLike ? usersCommentLike.user_ids.length : 0}</td>
+                <td>{usersCommentDislike ? usersCommentDislike.user_ids.length : 0}</td>
 
                 <td>
-                  <button
+                  <button className='btn'
                     onClick={() => addLike(comment.id)}
                     disabled={usersCommentLike ? usersCommentLike.user_ids.includes(currentUser.id) : false}
                   >
                     Like
                   </button>
-                  <button
+                  <button className='btn'
                     onClick={() => disLike(comment.id)}
                     disabled={usersCommentDislike ? usersCommentDislike.user_ids.includes(currentUser.id) : false}
                   >
@@ -108,11 +105,11 @@ export default function AllComments({ quoteId }) {
                 <td>
                   {comment.user_id === currentUser.id ? (
                     <>
-                      <button onClick={() => editComment(comment)}>Edit</button>
-                      <button onClick={() => deleteComment(comment.id)}>Delete</button>
+                      <button className='btn' onClick={() => editComment(comment)}>Edit</button>
+                      <button className='btn deletebtn' onClick={() => deleteComment(comment.id)}>Delete</button>
                     </>
                   ) : (
-                    'N/A'
+                    ''
                   )}
                 </td>
               </tr>

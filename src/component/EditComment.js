@@ -21,7 +21,7 @@ export default function EditComment() {
   };
 
   return (
-    <div>
+    <center>
       <label>'Edit Comment'</label>
       <input
         type="text"
@@ -31,6 +31,6 @@ export default function EditComment() {
       <button onClick={handleCommentAction}>
         Save Comment
       </button>
-    </div>
+    </center>
   );
 }

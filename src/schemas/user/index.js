@@ -7,7 +7,8 @@ const users = [
     last_name: 'bush',
     gender: 'male',
     email: 'tayyab@gmail.com',
-    password: '12345'
+    password: '12345',
+    following_ids: [2,3]
   },
   {
     id: 2,
@@ -15,7 +16,8 @@ const users = [
     last_name: 'ali',
     gender: 'male',
     email: 'tayyabali@gmail.com',
-    password: '12345'
+    password: '12345',
+    following_ids: [1,3]
   },
   {
     id: 3,
@@ -24,6 +26,7 @@ const users = [
     gender: 'male',
     email: 'khan@gmail.com',
     password: '12345',
+    following_ids: [1],
     role: 'admin'
   }
 ];

@@ -3,6 +3,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { useDispatch } from 'react-redux';
+import './css/Login.css'; // Import the CSS file
 
 import { setCurrentUser } from '../actions/userActions';
 
@@ -26,10 +27,11 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className='container'>
+      {/* <h2>Login</h2> */}
+      <center>
       <form>
-        <div>
+        <div className='fieldss'>
           <label>Username:</label>
           <input
             type="text"
@@ -37,7 +39,7 @@ const Login = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div>
+        <div className='fieldss'>
           <label>Password:</label>
           <input
             type="password"
@@ -53,6 +55,7 @@ const Login = () => {
       <p>
         Don't have an account? <Link to="/signup">Signup here</Link>.
       </p>
+      </center>
     </div>
   );
 };

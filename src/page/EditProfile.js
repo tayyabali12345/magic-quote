@@ -46,10 +46,10 @@ const EditProfile = () => {
   };
 
   return (
-    <div>
+    <center>
       <h2>Edit Profile</h2>
       <form>
-        <div>
+        <div className='fieldss '>
           <label>First Name:</label>
           <input
             type="text"
@@ -57,7 +57,7 @@ const EditProfile = () => {
             onChange={handleFirstNameChange}
           />
         </div>
-        <div>
+        <div className='fieldss'>
           <label>Last Name:</label>
           <input
             type="text"
@@ -65,7 +65,7 @@ const EditProfile = () => {
             onChange={handleLastNameChange}
           />
         </div>
-        <div>
+        <div className='fieldss'>
           <label>Gender:</label>
           <select value={editedUser.gender || ''} onChange={handleGenderChange}>
             <option value="">Select Gender</option>
@@ -74,7 +74,7 @@ const EditProfile = () => {
             <option value="other">Other</option>
           </select>
         </div>
-        <div>
+        <div className='fieldss'>
           <label>Password:</label>
           <input
             type="password"
@@ -87,7 +87,7 @@ const EditProfile = () => {
           Save Changes
         </button>
       </form>
-    </div>
+    </center>
   );
 };
 
