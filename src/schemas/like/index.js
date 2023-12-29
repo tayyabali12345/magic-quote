@@ -17,7 +17,6 @@ const likes = [
     comment_id: 2,
     user_ids: [2]
   },
-
   {
     id: 4,
     quote_id: null,

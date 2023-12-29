@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { addComment, updateComment  } from '../actions/commentActions';
 import { updateQuote  } from '../actions/quoteActions';
 import { useNavigate,useParams } from 'react-router-dom';
-
 
 export default function EditQuote() {
   const dispatch = useDispatch();

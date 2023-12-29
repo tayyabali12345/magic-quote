@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Comments from './comments'
 import NewComment from './NewComment'
 import { userCommentLikes, removeCommentedUser } from '../actions/likeActions';
-import { userCommentDislikes, removeCommentedDislikeUser  } from '../actions/dislikeActions';
+import { userCommentDislikes, removeCommentedDislikeUser } from '../actions/dislikeActions';
 import { removeQuote  } from '../actions/quoteActions';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -49,7 +49,6 @@ const ShowRandomQuote = () => {
     if (usersQuoteDislike) {
       dispatch(removeCommentedDislikeUser([id, currentUser.id, "quote"]));
     }
-
   };
 
   const quoteDisLike = (id)=> {
@@ -86,7 +85,7 @@ const ShowRandomQuote = () => {
     <div>
       <center>
       <div className='showdowed'>
-        <h2>Random Quote</h2>
+        <h2> Random Quote </h2>
         <p>Author: {currentQuote.author}</p>
         <p>Quote: {currentQuote.description}</p>
         <p>Date: {new Date(currentQuote.date).toLocaleDateString()}</p>

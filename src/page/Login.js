@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { useDispatch } from 'react-redux';
-import './css/Login.css'; // Import the CSS file
+import './css/Login.css';
 
 import { setCurrentUser } from '../actions/userActions';
 

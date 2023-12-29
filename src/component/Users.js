@@ -7,8 +7,6 @@ export default function Users() {
   const users = useSelector((state) => state.users.users);
   const currentUser = useSelector((state) => state.users.currentUser);
   const dispatch = useDispatch();
-  console.log('che3ck it');
-  console.log(currentUser);
 
   const handleFollowRequest = (userId) => {
     dispatch(followUser([ userId, currentUser.id ]));
